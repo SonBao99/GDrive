@@ -4,13 +4,16 @@
       <div class="ui center aligned container">
         <div class="ui large secondary inverted pointing menu compact">
           <router-link to="/words" exact class="item">
-            <i class=""comment outline icon></i>Words
+            <i class="comment outline icon"></i>Words
           </router-link>
           <router-link to="/words/new" class="item">
             <i class="plus icon"></i>New
           </router-link>
-          <router-link to="/words/test" class="item">
+          <router-link to="/test" class="item">
             <i class="check icon"></i>Test
+          </router-link>
+          <router-link to="/profile" class="item">
+            <i class="user circle icon"></i>Profile
           </router-link>
         </div>
       </div>
