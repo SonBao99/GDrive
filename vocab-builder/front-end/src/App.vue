@@ -51,7 +51,7 @@ input {
   width: 300px;
 }
 div.label {
-  width: 120px;
+  width: 150px;
 }
 div.input {
   margin-bottom:10px;

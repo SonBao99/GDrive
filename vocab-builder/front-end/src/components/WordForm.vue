@@ -4,7 +4,7 @@
 
         <div class="ui labeled input fluid">
             <div class="ui label">
-                <i class="vietnam flag"></i> Vietnam
+                <i class="vietnam flag"></i> Vietnamese
             </div>
             <input type="text" placeholder="Enter word..." v-model="word.vietnamese" />
         </div>
