@@ -4,14 +4,16 @@
         <table id="words" class="ui celled compact table">
             <thead>
                 <tr>
-                    <th>English</th>
-                    <th>Vietnamese</th>
+                    <th><i class="united kingdom flag"></i> English</th>
+                    <th><i class="vietnam flag"></i>Vietnamese</th>
+                    <th><i class="japan flag"></i>Japanese</th>
                     <th colspan="3"></th>
                 </tr>
             </thead>
             <tr v-for="(word, i) in words" :key="i">
                 <td>{{ word.english }}</td>
                 <td>{{ word.vietnamese }}</td>
+                <td>{{ word.japanese }}</td>
                 <td width="75" class="center aligned"><router-link :to="{ name: 'show', params: { id: word._id }}">Show</router-link></td>
                 <td width="75" class="center aligned"><router-link :to="{ name: 'edit', params: { id: word._id }}">Edit</router-link></td>
                 <td width="75" class="center aligned" @click.prevent="onDestroy(word._id)"><a :href="`/words/${word._id}`">Delete</a></td>

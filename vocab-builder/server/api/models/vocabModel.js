@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const Vocab = mongoose.model("Vocab", new mongoose.Schema({
     english: { type: String, required: "English word cannot be empty" },
-    vietnamese: { type: String, required: "Vietnamese word cannot be empty" }
+    vietnamese: { type: String, required: "Vietnamese word cannot be empty" },
+    japanese: { type: String, required: "Japanese word cannot be empty" }
 }, { collection: "vocab" }));
 
 // List all words

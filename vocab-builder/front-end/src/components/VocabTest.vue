@@ -16,6 +16,13 @@
                 <input type="text" placeholder="Enter word..." v-model="english" :disabled="testOver"
                     autocomplete="off" />
             </div>
+            <div class="ui labeled input fluid">
+                <div class="ui label">
+                    <i class="japan flag"></i> Japanese
+                </div>
+                <input type="text" placeholder="Enter word..." v-model="japanese" :disabled="testOver"
+                    autocomplete="off" />
+            </div>
 
             <button class="positive ui button" :disabled="testOver">Submit</button>
         </form>
@@ -42,6 +49,7 @@ export default {
             result: '',
             resultClass: '',
             english: '',
+            japanese: '',
             score: 0,
             testOver: false
         };
@@ -53,22 +61,33 @@ export default {
     },
     methods: {
         onSubmit: function () {
-            if (this.english === this.currWord.english) {
-                this.flash('Correct!', 'success', { timeout: 1000 });
-                this.score += 1;
+            let correctEnglish = this.english === this.currWord.english;
+            let correctJapanese = this.japanese === this.currWord.japanese;
+
+            // Check both answers for a full point
+            if (correctEnglish && correctJapanese) {
+                this.flash('Correct! Full point.', 'success', { timeout: 1000 });
+                this.score += 1;  // Full point
+            } else if (correctEnglish || correctJapanese) {
+                this.flash('Partial Correct! Proceeding.', 'warning', { timeout: 1000 });
             } else {
-                this.flash('Wrong!', 'error', { timeout: 1000 });
+                this.flash('Incorrect! Proceeding.', 'error', { timeout: 1000 });
                 this.incorrectGuesses.push(this.currWord.vietnamese);
             }
 
+            // Reset inputs and move to the next word
             this.english = '';
+            this.japanese = '';
             this.randWords.shift();
 
+            // End of the test condition
             if (this.randWords.length === 0) {
                 this.testOver = true;
                 this.displayResults();
             }
         },
+
+
         displayResults: function () {
             if (this.incorrectGuesses.length === 0) {
                 this.result = 'You got everything correct. Well done!';
